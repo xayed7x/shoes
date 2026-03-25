@@ -60,7 +60,7 @@ export default function ProductCatalog() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay }}
                   className="hidden md:flex flex-col bg-white border border-[#E8DFD0] rounded-[16px] overflow-hidden group hover:-translate-y-[6px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out"
                 >
                   <div className="w-full h-[240px] bg-[#F5F0E8] flex items-center justify-center overflow-hidden">
@@ -103,7 +103,7 @@ export default function ProductCatalog() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: mobileDelay }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: mobileDelay }}
                   className="md:hidden flex flex-col bg-white border border-[#E8DFD0] rounded-[12px] overflow-hidden active:border-[#C4714A] transition-colors duration-200"
                 >
                   <div className="relative w-full h-[160px] bg-[#F5F0E8] flex items-center justify-center">
