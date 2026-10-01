@@ -67,7 +67,7 @@ export default function Testimonials() {
                     {"★".repeat(t.stars)}
                   </div>
                   <span className="font-serif text-[80px] text-[#F0EBE3] leading-[0.8]">
-                    "
+                    &quot;
                   </span>
                 </div>
 

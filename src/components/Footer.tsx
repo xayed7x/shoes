@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const footerLinks = {
@@ -17,20 +17,20 @@ export default function Footer() {
     setOpenAccordion(openAccordion === name ? null : name);
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut" as any,
+        ease: "easeOut",
         staggerChildren: 0.1,
       },
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
@@ -65,7 +65,7 @@ export default function Footer() {
               ].map((social, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href="/shop"
                   className="w-[38px] h-[38px] rounded-full bg-white/5 flex items-center justify-center text-white/55 hover:bg-[#C4714A]/25 hover:text-[#C4714A] transition-all duration-200"
                   aria-label={social.name}
                 >
@@ -83,7 +83,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Desktop/Tablet Link Columns & Mobile Accordions */}
-          {Object.entries(footerLinks).map(([title, links], idx) => (
+          {Object.entries(footerLinks).map(([title, links]) => (
             <motion.div key={title} variants={itemVariants} className="flex flex-col">
               {/* Desktop Header */}
               <h3 className="hidden md:block font-sans font-medium text-[11px] uppercase tracking-[0.15em] text-white/35 mb-6">
@@ -109,7 +109,7 @@ export default function Footer() {
                 {links.map((link) => (
                   <a
                     key={link}
-                    href="#"
+                    href={link === "Track Order" ? "/track" : "/shop"}
                     className="font-sans font-light text-[14px] text-white/55 hover:text-white hover:translate-x-1 transition-all duration-200"
                   >
                     {link}
@@ -128,7 +128,7 @@ export default function Footer() {
                     {links.map((link) => (
                       <a
                         key={link}
-                        href="#"
+                        href={link === "Track Order" ? "/track" : "/shop"}
                         className="font-sans font-light text-[14px] text-white/50"
                       >
                         {link}
@@ -148,8 +148,8 @@ export default function Footer() {
           <span className="order-2 md:order-1">© 2025 Soleil. All rights reserved.</span>
           <span className="order-1 md:order-2 hidden md:block">Made with care.</span>
           <div className="flex gap-6 order-3">
-            <a href="#" className="hover:text-white/60 transition-colors duration-200">Privacy Policy</a>
-            <a href="#" className="hover:text-white/60 transition-colors duration-200">Terms of Service</a>
+            <a href="/shop" className="hover:text-white/60 transition-colors duration-200">Privacy Policy</a>
+            <a href="/shop" className="hover:text-white/60 transition-colors duration-200">Terms of Service</a>
           </div>
         </div>
       </div>
