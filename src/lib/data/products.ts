@@ -1,7 +1,7 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { Product } from "@/types";
-import { FALLBACK_PRODUCTS } from "./fallbackData";
+import { FALLBACK_PRODUCTS, FALLBACK_CATEGORIES } from "./fallbackData";
 
 // ─── Basic getProducts ────────────────────────────────────────────────────────
 

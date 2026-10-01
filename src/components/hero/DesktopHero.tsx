@@ -13,7 +13,7 @@ export default async function DesktopHero() {
     heroSlides.map((s) => getProductBySlug(s.productSlug))
   );
 
-  const prices: Record<string, string | null> = {};
+  const prices: Record<string, number | null> = {};
   heroSlides.forEach((slide, idx) => {
     const product = products[idx];
     prices[slide.productSlug] = product ? product.price : null;
