@@ -32,6 +32,8 @@ export async function generateMetadata({
   };
 }
 
+import ScrollToTop from "@/components/ScrollToTop";
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
@@ -45,6 +47,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="w-full min-h-screen bg-[#F5F0E8] pt-[130px] md:pt-[150px] pb-20">
+      <ScrollToTop />
       <div className="max-w-[1200px] mx-auto px-4 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
           {/* Image Gallery */}
