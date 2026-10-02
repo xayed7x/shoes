@@ -12,7 +12,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Soleil Admin",
+  title: "Dashboard | Premium Export Shoes Admin",
   robots: { index: false, follow: false },
 };
 
@@ -23,19 +23,23 @@ export default async function DashboardPage() {
   let revenue = 0;
   let totalProducts = 0;
   let pendingOrders = 0;
-  let recentOrders: { order_number: string; customer_name: string; grand_total: number; order_status: string; created_at: string }[] = [];
+  let recentOrders: {
+    order_number: string;
+    customer_name: string;
+    grand_total: number;
+    order_status: string;
+    created_at: string;
+  }[] = [];
 
   if (supabase) {
     const [ordersRes, productsRes, recentRes] = await Promise.all([
+      supabase.from("orders").select("grand_total, order_status"),
+      supabase.from("products").select("id", { count: "exact", head: true }),
       supabase
         .from("orders")
-        .select("grand_total, order_status"),
-      supabase
-        .from("products")
-        .select("id", { count: "exact", head: true }),
-      supabase
-        .from("orders")
-        .select("order_number, customer_name, grand_total, order_status, created_at")
+        .select(
+          "order_number, customer_name, grand_total, order_status, created_at",
+        )
         .order("created_at", { ascending: false })
         .limit(5),
     ]);
@@ -45,7 +49,9 @@ export default async function DashboardPage() {
       revenue = ordersRes.data
         .filter((o) => o.order_status !== "cancelled")
         .reduce((sum, o) => sum + Number(o.grand_total), 0);
-      pendingOrders = ordersRes.data.filter((o) => o.order_status === "pending").length;
+      pendingOrders = ordersRes.data.filter(
+        (o) => o.order_status === "pending",
+      ).length;
     }
     totalProducts = productsRes.count ?? 0;
     recentOrders = (recentRes.data ?? []) as typeof recentOrders;
@@ -84,12 +90,18 @@ export default async function DashboardPage() {
 
   function statusColor(status: string) {
     switch (status) {
-      case "pending":    return "text-amber-400";
-      case "processing": return "text-blue-400";
-      case "shipped":    return "text-[#E6EAF2]";
-      case "delivered":  return "text-emerald-400";
-      case "cancelled":  return "text-red-400";
-      default:           return "text-[#8B95A9]";
+      case "pending":
+        return "text-amber-400";
+      case "processing":
+        return "text-blue-400";
+      case "shipped":
+        return "text-[#E6EAF2]";
+      case "delivered":
+        return "text-emerald-400";
+      case "cancelled":
+        return "text-red-400";
+      default:
+        return "text-[#8B95A9]";
     }
   }
 
@@ -117,8 +129,12 @@ export default async function DashboardPage() {
                   <Icon className="w-5 h-5" style={{ color: s.color }} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[#8B95A9] text-[11px] uppercase tracking-[0.1em]">{s.label}</p>
-                  <p className="text-[#E6EAF2] text-[18px] font-semibold leading-tight truncate">{s.value}</p>
+                  <p className="text-[#8B95A9] text-[11px] uppercase tracking-[0.1em]">
+                    {s.label}
+                  </p>
+                  <p className="text-[#E6EAF2] text-[18px] font-semibold leading-tight truncate">
+                    {s.value}
+                  </p>
                 </div>
               </AdminCard>
             </Link>
@@ -129,7 +145,9 @@ export default async function DashboardPage() {
       {/* ── Recent orders ── */}
       <AdminCard padding="none">
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/06">
-          <h2 className="text-[14px] font-semibold text-[#E6EAF2]">Recent Orders</h2>
+          <h2 className="text-[14px] font-semibold text-[#E6EAF2]">
+            Recent Orders
+          </h2>
           <Link
             href="/admin/orders"
             className="flex items-center gap-1 text-[11px] text-[#8B95A9] hover:text-[#E6EAF2] transition-colors"
@@ -157,12 +175,18 @@ export default async function DashboardPage() {
                     </span>
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[13px] text-[#E6EAF2] font-medium truncate">{order.customer_name}</p>
-                    <p className="text-[11px] font-mono text-[#8B95A9]">{order.order_number}</p>
+                    <p className="text-[13px] text-[#E6EAF2] font-medium truncate">
+                      {order.customer_name}
+                    </p>
+                    <p className="text-[11px] font-mono text-[#8B95A9]">
+                      {order.order_number}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 flex-shrink-0">
-                  <span className={`text-[11px] font-semibold capitalize ${statusColor(order.order_status)}`}>
+                  <span
+                    className={`text-[11px] font-semibold capitalize ${statusColor(order.order_status)}`}
+                  >
                     {order.order_status}
                   </span>
                   <span className="text-[13px] font-semibold text-[#E6EAF2] tabular-nums">
@@ -177,4 +201,3 @@ export default async function DashboardPage() {
     </div>
   );
 }
-

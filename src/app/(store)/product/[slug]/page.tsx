@@ -20,12 +20,12 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return { title: "Product Not Found | Soleil" };
+  if (!product) return { title: "Product Not Found | Premium Export Shoes" };
   return {
-    title: `${product.name} | Soleil`,
+    title: `${product.name} | Premium Export Shoes`,
     description: product.description,
     openGraph: {
-      title: `${product.name} | Soleil`,
+      title: `${product.name} | Premium Export Shoes`,
       description: product.description,
       images: product.images?.[0] ? [{ url: product.images[0] }] : [],
     },
@@ -39,7 +39,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) notFound();
 
   const allProducts = await getProducts({ limit: 10 });
-  const relatedProducts = allProducts.filter((p) => p.id !== product.id).slice(0, 4);
+  const relatedProducts = allProducts
+    .filter((p) => p.id !== product.id)
+    .slice(0, 4);
 
   return (
     <main className="w-full min-h-screen bg-[#F5F0E8] pt-[130px] md:pt-[150px] pb-20">
@@ -76,11 +78,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <span className="text-2xl font-semibold text-[#1C1917]">
                 <Price amount={product.price} />
               </span>
-              {product.compare_at_price && product.compare_at_price > product.price && (
-                <span className="text-[#6B6560] line-through text-base">
-                  <Price amount={product.compare_at_price} muted strikethrough />
-                </span>
-              )}
+              {product.compare_at_price &&
+                product.compare_at_price > product.price && (
+                  <span className="text-[#6B6560] line-through text-base">
+                    <Price
+                      amount={product.compare_at_price}
+                      muted
+                      strikethrough
+                    />
+                  </span>
+                )}
             </div>
 
             {/* Description */}

@@ -5,7 +5,7 @@ import { Settings } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Settings | Soleil Admin",
+  title: "Settings | Premium Export Shoes Admin",
   robots: { index: false, follow: false },
 };
 

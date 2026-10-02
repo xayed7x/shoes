@@ -4,18 +4,20 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-bengali: var(--font-bengali), system-ui, sans-serif;
+  --font-barlow-condensed:
+    var(--font-barlow-condensed), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --cream: #F5F0E8;
-  --warm-white: #FAF8F4;
-  --sand: #E8DFD0;
-  --terracotta: #C4714A;
-  --rust: #A85432;
-  --charcoal: #1C1917;
-  --stone: #6B6560;
-  --gold: #C9A96E;
-  --sage: #B5C4A8;
+  --cream: #f5f0e8;
+  --warm-white: #faf8f4;
+  --sand: #e8dfd0;
+  --terracotta: #c4714a;
+  --rust: #a85432;
+  --charcoal: #1c1917;
+  --stone: #6b6560;
+  --gold: #c9a96e;
+  --sage: #b5c4a8;
 }
 
 html {
@@ -36,8 +38,12 @@ body {
 }
 
 @keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-scroll-left {
@@ -46,25 +52,33 @@ body {
 
 /* Checkout button shimmer animation */
 @keyframes soleil-shimmer {
-  0%   { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }
 
 @keyframes soleil-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-order-loading {
   background: linear-gradient(
     90deg,
-    #1C1917 0%,
+    #1c1917 0%,
     #3a2f2a 20%,
-    #C4714A 45%,
+    #c4714a 45%,
     #e0845a 50%,
-    #C4714A 55%,
+    #c4714a 55%,
     #3a2f2a 80%,
-    #1C1917 100%
+    #1c1917 100%
   );
   background-size: 200% auto;
   animation: soleil-shimmer 1.6s linear infinite;

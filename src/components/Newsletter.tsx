@@ -38,8 +38,8 @@ export default function Newsletter() {
   return (
     <section className="w-full bg-[#1C1917] py-[80px] md:py-[120px] px-6 relative overflow-hidden">
       {/* Decorative Background Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-sans font-black text-[150px] md:text-[200px] lg:text-[280px] text-white/[0.03] select-none pointer-events-none z-0 whitespace-nowrap tracking-wider">
-        SOLEIL
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-barlow-condensed font-extrabold italic uppercase text-[150px] md:text-[200px] lg:text-[280px] text-white/[0.03] select-none pointer-events-none z-0 whitespace-nowrap tracking-wider">
+        PREMIUM
       </div>
 
       {/* Decorative Blobs */}
@@ -53,21 +53,37 @@ export default function Newsletter() {
         viewport={{ once: true }}
         className="relative z-10 max-w-[680px] mx-auto text-center flex flex-col items-center"
       >
-        <motion.span variants={itemVariants} className="font-sans text-[11px] tracking-[0.2em] text-[#C4714A] uppercase">
+        <motion.span
+          variants={itemVariants}
+          className="font-sans text-[11px] tracking-[0.2em] text-[#C4714A] uppercase"
+        >
           STAY IN THE LOOP
         </motion.span>
-        
-        <motion.div variants={itemVariants} className="w-[40px] h-[1px] bg-[#C4714A] my-6" />
 
-        <motion.h2 variants={itemVariants} className="font-serif italic font-light text-[36px] md:text-[52px] lg:text-[68px] text-[#FAF8F4] leading-[1.15]">
+        <motion.div
+          variants={itemVariants}
+          className="w-[40px] h-[1px] bg-[#C4714A] my-6"
+        />
+
+        <motion.h2
+          variants={itemVariants}
+          className="font-serif italic font-light text-[36px] md:text-[52px] lg:text-[68px] text-[#FAF8F4] leading-[1.15]"
+        >
           Step into something new.
         </motion.h2>
 
-        <motion.p variants={itemVariants} className="font-sans font-light text-[15px] text-white/55 mt-4 max-w-[500px]">
-          New arrivals, exclusive drops, and stories from our craftsmen — delivered to your inbox.
+        <motion.p
+          variants={itemVariants}
+          className="font-sans font-light text-[15px] text-white/55 mt-4 max-w-[500px]"
+        >
+          New arrivals, exclusive drops, and stories from our craftsmen —
+          delivered to your inbox.
         </motion.p>
 
-        <motion.div variants={itemVariants} className="w-full max-w-[480px] mt-12 overflow-hidden">
+        <motion.div
+          variants={itemVariants}
+          className="w-full max-w-[480px] mt-12 overflow-hidden"
+        >
           <AnimatePresence mode="wait">
             {status === "success" ? (
               <motion.div
@@ -106,7 +122,10 @@ export default function Newsletter() {
           </AnimatePresence>
         </motion.div>
 
-        <motion.p variants={itemVariants} className="font-sans text-[11px] text-white/30 mt-4">
+        <motion.p
+          variants={itemVariants}
+          className="font-sans text-[11px] text-white/30 mt-4"
+        >
           No spam. Unsubscribe anytime.
         </motion.p>
       </motion.div>

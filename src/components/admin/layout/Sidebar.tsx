@@ -12,6 +12,7 @@ import {
   Settings,
   X,
 } from "lucide-react";
+import BrandWordmark from "@/components/BrandWordmark";
 
 interface NavItem {
   label: string;
@@ -22,13 +23,45 @@ interface NavItem {
 }
 
 const NAV: NavItem[] = [
-  { label: "Dashboard", href: "/admin", icon: <LayoutDashboard className="w-4 h-4" /> },
-  { label: "Products", href: "/admin/products", icon: <Package className="w-4 h-4" /> },
-  { label: "Orders", href: "/admin/orders", icon: <ShoppingBag className="w-4 h-4" /> },
-  { label: "Homepage", href: "/admin/homepage", icon: <Home className="w-4 h-4" /> },
-  { label: "Categories", href: "/admin/categories", icon: <Tag className="w-4 h-4" />, disabled: true, soon: true },
-  { label: "Customers", href: "/admin/customers", icon: <Users className="w-4 h-4" />, disabled: true, soon: true },
-  { label: "Settings", href: "/admin/settings", icon: <Settings className="w-4 h-4" /> },
+  {
+    label: "Dashboard",
+    href: "/admin",
+    icon: <LayoutDashboard className="w-4 h-4" />,
+  },
+  {
+    label: "Products",
+    href: "/admin/products",
+    icon: <Package className="w-4 h-4" />,
+  },
+  {
+    label: "Orders",
+    href: "/admin/orders",
+    icon: <ShoppingBag className="w-4 h-4" />,
+  },
+  {
+    label: "Homepage",
+    href: "/admin/homepage",
+    icon: <Home className="w-4 h-4" />,
+  },
+  {
+    label: "Categories",
+    href: "/admin/categories",
+    icon: <Tag className="w-4 h-4" />,
+    disabled: true,
+    soon: true,
+  },
+  {
+    label: "Customers",
+    href: "/admin/customers",
+    icon: <Users className="w-4 h-4" />,
+    disabled: true,
+    soon: true,
+  },
+  {
+    label: "Settings",
+    href: "/admin/settings",
+    icon: <Settings className="w-4 h-4" />,
+  },
 ];
 
 interface SidebarProps {
@@ -37,7 +70,11 @@ interface SidebarProps {
   mobile?: boolean;
 }
 
-export default function AdminSidebar({ open, onClose, mobile = false }: SidebarProps) {
+export default function AdminSidebar({
+  open,
+  onClose,
+  mobile = false,
+}: SidebarProps) {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -50,12 +87,7 @@ export default function AdminSidebar({ open, onClose, mobile = false }: SidebarP
       {/* Logo + close button */}
       <div className="flex items-center justify-between px-5 pt-5 pb-6">
         <div className="flex items-center gap-2.5">
-          <span
-            className="text-[22px] font-bold italic text-[#E6EAF2] leading-none"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
-          >
-            Soleil
-          </span>
+          <BrandWordmark size="sm" dark />
           <span className="text-[9px] font-bold uppercase tracking-[0.15em] px-1.5 py-0.5 rounded-[5px] bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/20">
             Admin
           </span>
@@ -77,7 +109,10 @@ export default function AdminSidebar({ open, onClose, mobile = false }: SidebarP
       </p>
 
       {/* Nav items */}
-      <nav className="flex-1 px-3 flex flex-col gap-0.5" aria-label="Admin navigation">
+      <nav
+        className="flex-1 px-3 flex flex-col gap-0.5"
+        aria-label="Admin navigation"
+      >
         {NAV.map((item) => {
           const active = isActive(item.href);
           if (item.disabled) {
@@ -130,7 +165,9 @@ export default function AdminSidebar({ open, onClose, mobile = false }: SidebarP
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse flex-none" />
           <span>Live storefront</span>
-          <span className="ml-auto text-[10px] opacity-50 group-hover:opacity-100 transition-opacity">↗</span>
+          <span className="ml-auto text-[10px] opacity-50 group-hover:opacity-100 transition-opacity">
+            ↗
+          </span>
         </a>
       </div>
     </div>
@@ -142,7 +179,9 @@ export default function AdminSidebar({ open, onClose, mobile = false }: SidebarP
         {/* Overlay */}
         <div
           className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-200 motion-reduce:transition-none ${
-            open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            open
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           }`}
           onClick={onClose}
           aria-hidden="true"

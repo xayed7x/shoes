@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  KeyboardEvent,
-} from "react";
+import { useState, useEffect, useCallback, useRef, KeyboardEvent } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { heroSlides } from "@/data/heroSlides";
 import { HeroSlideContent, HeroShoe } from "./HeroSlide";
@@ -86,7 +80,7 @@ export default function DesktopHeroClient({ prices }: DesktopHeroClientProps) {
         goNext();
       }
     },
-    [goPrev, goNext]
+    [goPrev, goNext],
   );
 
   const currentSlide = heroSlides[activeIndex];
@@ -122,27 +116,34 @@ export default function DesktopHeroClient({ prices }: DesktopHeroClientProps) {
         />
       </AnimatePresence>
 
-      {/* ── Giant "Soleil" watermark ───────────────────────────────────────── */}
+      {/* ── Giant "PREMIUM" watermark ───────────────────────────────────────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden select-none"
       >
         <span
-          className="font-serif italic translate-x-[12%] leading-none"
+          className="font-barlow-condensed font-extrabold italic uppercase translate-x-[12%] leading-none"
           style={{
             fontSize: "clamp(200px, 28vw, 380px)",
             color: currentSlide.theme.watermarkColor,
             transition: "color 0.9s ease",
           }}
         >
-          Soleil
+          PREMIUM
         </span>
       </div>
 
       {/* ── Content container ─────────────────────────────────────────────── */}
-      <div className="relative z-10 mx-auto h-full flex flex-col px-8 lg:px-10" style={{ maxWidth: "1200px" }}>
+      <div
+        className="relative z-10 mx-auto h-full flex flex-col px-8 lg:px-10"
+        style={{ maxWidth: "1200px" }}
+      >
         {/* Navbar spacer — nav pill is 64px tall + 16px top offset */}
-        <div className="flex-none" style={{ height: "96px" }} aria-hidden="true" />
+        <div
+          className="flex-none"
+          style={{ height: "96px" }}
+          aria-hidden="true"
+        />
 
         {/* Main split row */}
         <div className="flex flex-1 items-center gap-8 lg:gap-12 overflow-hidden">
@@ -168,7 +169,6 @@ export default function DesktopHeroClient({ prices }: DesktopHeroClientProps) {
             ))}
           </div>
         </div>
-
       </div>
 
       {/* Controls row — absolute bottom-center of the section */}

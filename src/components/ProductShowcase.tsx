@@ -10,8 +10,12 @@ interface ProductShowcaseProps {
   products?: Product[];
 }
 
-export default function ProductShowcase({ products = FALLBACK_PRODUCTS }: ProductShowcaseProps) {
-  const displayProducts = (products.length >= 3 ? products : FALLBACK_PRODUCTS).slice(0, 3);
+export default function ProductShowcase({
+  products = FALLBACK_PRODUCTS,
+}: ProductShowcaseProps) {
+  const displayProducts = (
+    products.length >= 3 ? products : FALLBACK_PRODUCTS
+  ).slice(0, 3);
 
   const containerVariants: Variants = {
     hidden: {},
@@ -24,7 +28,11 @@ export default function ProductShowcase({ products = FALLBACK_PRODUCTS }: Produc
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
@@ -53,8 +61,11 @@ export default function ProductShowcase({ products = FALLBACK_PRODUCTS }: Produc
             const isFeatured = index === 1;
             const imageSrc = product.images?.[0] || "/shoes/shoe-1.png";
             const orderClass =
-              index === 0 ? "order-2 md:order-1" :
-              index === 1 ? "order-1 md:order-2" : "order-3 md:order-3";
+              index === 0
+                ? "order-2 md:order-1"
+                : index === 1
+                  ? "order-1 md:order-2"
+                  : "order-3 md:order-3";
 
             return (
               <motion.div
@@ -82,18 +93,24 @@ export default function ProductShowcase({ products = FALLBACK_PRODUCTS }: Produc
                     src={imageSrc}
                     alt={product.name}
                     className={`object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl ${
-                      isFeatured ? "h-[280px] md:h-[320px]" : "h-[240px] md:h-[260px]"
+                      isFeatured
+                        ? "h-[280px] md:h-[320px]"
+                        : "h-[240px] md:h-[260px]"
                     }`}
                   />
                 </Link>
 
                 {/* Separator line */}
-                <div className={`w-full h-[1px] mb-6 ${isFeatured ? "bg-white/20" : "bg-[#1C1917]/10"}`} />
+                <div
+                  className={`w-full h-[1px] mb-6 ${isFeatured ? "bg-white/20" : "bg-[#1C1917]/10"}`}
+                />
 
                 {/* Text Area */}
                 <div className="flex flex-col flex-1">
-                  <span className={`font-sans text-[10px] uppercase tracking-[0.15em] mb-2 ${isFeatured ? "text-white/80" : "text-[#6B6560]"}`}>
-                    SOLEIL
+                  <span
+                    className={`font-sans text-[10px] uppercase tracking-[0.15em] mb-2 ${isFeatured ? "text-white/80" : "text-[#6B6560]"}`}
+                  >
+                    PREMIUM EXPORT SHOES
                   </span>
                   <Link
                     href={`/product/${product.slug}`}
@@ -103,7 +120,9 @@ export default function ProductShowcase({ products = FALLBACK_PRODUCTS }: Produc
                       {product.name}
                     </h3>
                   </Link>
-                  <p className={`font-sans text-[13px] mb-8 leading-relaxed ${isFeatured ? "text-white/90" : "text-[#6B6560]"}`}>
+                  <p
+                    className={`font-sans text-[13px] mb-8 leading-relaxed ${isFeatured ? "text-white/90" : "text-[#6B6560]"}`}
+                  >
                     {product.description}
                   </p>
 
@@ -131,7 +150,10 @@ export default function ProductShowcase({ products = FALLBACK_PRODUCTS }: Produc
 
         {/* View all link */}
         <div className="mt-12 flex justify-center w-full">
-          <Link href="/shop" className="font-serif italic text-[18px] text-[#1C1917] hover:underline transition-all underline-offset-4">
+          <Link
+            href="/shop"
+            className="font-serif italic text-[18px] text-[#1C1917] hover:underline transition-all underline-offset-4"
+          >
             View all products →
           </Link>
         </div>

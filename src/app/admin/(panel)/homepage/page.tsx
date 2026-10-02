@@ -5,7 +5,7 @@ import { Home } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Homepage | Soleil Admin",
+  title: "Homepage | Premium Export Shoes Admin",
   robots: { index: false, follow: false },
 };
 

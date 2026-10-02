@@ -17,9 +17,9 @@ export default function BrandStory() {
       "delay-[250ms]",
       "delay-[350ms]",
     ];
-    
+
     const baseTransition = "transition-all duration-[800ms] ease-out";
-    
+
     if (isTextInView) {
       return `opacity-100 translate-x-0 translate-y-0 ${baseTransition} ${delayClasses[idx]}`;
     }
@@ -29,10 +29,9 @@ export default function BrandStory() {
   return (
     <section className="w-full h-auto lg:h-[600px] bg-[#F5F0E8] overflow-hidden">
       <div className="flex flex-col lg:flex-row w-full h-full">
-        
         {/* Left Column — Image Side */}
         <div className="w-full lg:w-1/2 h-[280px] md:h-[360px] lg:h-full overflow-hidden relative">
-          <motion.div 
+          <motion.div
             className="w-full h-full"
             initial={{ scale: 1.05 }}
             whileInView={{ scale: 1 }}
@@ -50,46 +49,62 @@ export default function BrandStory() {
         </div>
 
         {/* Right Column — Text Side */}
-        <div 
+        <div
           ref={textRef}
           className="w-full lg:w-1/2 bg-[#FAF8F4] flex flex-col justify-center p-[48px_24px] lg:p-[80px]"
         >
           {/* Label */}
-          <span className={`font-sans text-[11px] uppercase tracking-[0.2em] text-[#C4714A] ${getRevealClass(0)}`}>
+          <span
+            className={`font-sans text-[11px] uppercase tracking-[0.2em] text-[#C4714A] ${getRevealClass(0)}`}
+          >
             OUR CRAFT
           </span>
-          
+
           {/* Decorative Line */}
-          <div className={`w-[40px] h-[1px] bg-[#C4714A] mt-[12px] mb-[32px] ${getRevealClass(0)}`} />
+          <div
+            className={`w-[40px] h-[1px] bg-[#C4714A] mt-[12px] mb-[32px] ${getRevealClass(0)}`}
+          />
 
           {/* Heading */}
-          <h2 className={`font-serif italic font-light text-[36px] lg:text-[48px] text-[#1C1917] leading-[1.2] ${getRevealClass(1)}`}>
+          <h2
+            className={`font-serif italic font-light text-[36px] lg:text-[48px] text-[#1C1917] leading-[1.2] ${getRevealClass(1)}`}
+          >
             Every stitch, placed with purpose.
           </h2>
 
           {/* Body Paragraph 1 */}
-          <p className={`font-sans font-light text-[15px] text-[#6B6560] leading-[1.8] mt-[24px] ${getRevealClass(2)}`}>
-            We believe that great footwear is not made in factories. It is made in moments — in the careful selection of leather, in the hands that shape each sole, in the quiet pride of a craftsman who signs every pair.
+          <p
+            className={`font-sans font-light text-[15px] text-[#6B6560] leading-[1.8] mt-[24px] ${getRevealClass(2)}`}
+          >
+            We believe that great footwear is not made in factories. It is made
+            in moments — in the careful selection of leather, in the hands that
+            shape each sole, in the quiet pride of a craftsman who signs every
+            pair.
           </p>
 
           {/* Body Paragraph 2 */}
-          <p className={`font-sans font-light text-[15px] text-[#6B6560] leading-[1.8] mt-[16px] ${getRevealClass(2)}`}>
-            Soleil was born from a simple obsession: to make sleepers that feel as remarkable as they look.
+          <p
+            className={`font-sans font-light text-[15px] text-[#6B6560] leading-[1.8] mt-[16px] ${getRevealClass(2)}`}
+          >
+            Premium Export Shoes was born from a simple obsession: to make
+            sleepers that feel as remarkable as they look.
           </p>
 
           {/* Text Link */}
           <div className={`mt-[40px] ${getRevealClass(3)}`}>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="group relative font-serif italic text-[18px] text-[#1C1917] hover:text-[#C4714A] transition-colors duration-300 inline-block"
             >
-              Read our story <span className="inline-block transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+              Read our story{" "}
+              <span className="inline-block transform group-hover:translate-x-1 transition-transform duration-300">
+                →
+              </span>
               {/* Animated underline */}
               <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-[#C4714A] transition-all duration-300 ease-out group-hover:w-full"></span>
             </a>
           </div>
         </div>
-        
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import { Metadata } from "next";
 import OrderConfirmedModal from "@/components/shop/OrderConfirmedModal";
 
 export const metadata: Metadata = {
-  title: "Order Confirmed | Soleil",
+  title: "Order Confirmed | Premium Export Shoes",
   robots: "noindex, nofollow",
 };
 
@@ -20,14 +20,22 @@ interface Props {
 // Status/payment badge helpers
 function statusColor(status: string) {
   switch (status) {
-    case "pending":     return { bg: "#FFF7ED", text: "#C4714A", dot: "#F97316" };
-    case "processing":  return { bg: "#EFF6FF", text: "#2563EB", dot: "#3B82F6" };
-    case "shipped":     return { bg: "#F0FDF4", text: "#16A34A", dot: "#22C55E" };
-    case "delivered":   return { bg: "#F0FDF4", text: "#15803D", dot: "#16A34A" };
-    case "cancelled":   return { bg: "#FFF1F2", text: "#DC2626", dot: "#EF4444" };
-    case "paid":        return { bg: "#F0FDF4", text: "#15803D", dot: "#22C55E" };
-    case "failed":      return { bg: "#FFF1F2", text: "#DC2626", dot: "#EF4444" };
-    default:            return { bg: "#FAF8F4", text: "#6B6560", dot: "#A8A29D" };
+    case "pending":
+      return { bg: "#FFF7ED", text: "#C4714A", dot: "#F97316" };
+    case "processing":
+      return { bg: "#EFF6FF", text: "#2563EB", dot: "#3B82F6" };
+    case "shipped":
+      return { bg: "#F0FDF4", text: "#16A34A", dot: "#22C55E" };
+    case "delivered":
+      return { bg: "#F0FDF4", text: "#15803D", dot: "#16A34A" };
+    case "cancelled":
+      return { bg: "#FFF1F2", text: "#DC2626", dot: "#EF4444" };
+    case "paid":
+      return { bg: "#F0FDF4", text: "#15803D", dot: "#22C55E" };
+    case "failed":
+      return { bg: "#FFF1F2", text: "#DC2626", dot: "#EF4444" };
+    default:
+      return { bg: "#FAF8F4", text: "#6B6560", dot: "#A8A29D" };
   }
 }
 
@@ -47,7 +55,10 @@ function StatusPill({ label }: { label: string }) {
   );
 }
 
-export default async function OrderConfirmationPage({ params, searchParams }: Props) {
+export default async function OrderConfirmationPage({
+  params,
+  searchParams,
+}: Props) {
   const { orderNumber } = await params;
   const { token } = await searchParams;
 
@@ -58,9 +69,12 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
     return (
       <main className="w-full min-h-screen bg-[#F5F0E8] pt-[120px] pb-[100px] px-5 flex flex-col items-center justify-center text-center">
         <AlertTriangle className="w-16 h-16 text-[#C4714A] mb-6" />
-        <h1 className="font-serif text-3xl mb-4 text-[#1C1917]">Demo Mode Active</h1>
+        <h1 className="font-serif text-3xl mb-4 text-[#1C1917]">
+          Demo Mode Active
+        </h1>
         <p className="font-sans text-[#6B6560] max-w-md mx-auto mb-8">
-          The database is not connected. Your order ({orderNumber}) was processed locally for demo purposes.
+          The database is not connected. Your order ({orderNumber}) was
+          processed locally for demo purposes.
         </p>
         <Link
           href="/"
@@ -81,16 +95,18 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
 
   if (error || !order) notFound();
 
-  const isManualPayment = order.payment_method === "bkash" || order.payment_method === "nagad";
-  const address = order.shipping_address as { address_line1: string; area: string; city: string };
+  const isManualPayment =
+    order.payment_method === "bkash" || order.payment_method === "nagad";
+  const address = order.shipping_address as {
+    address_line1: string;
+    area: string;
+    city: string;
+  };
 
   return (
     <>
       {/* ── Order confirmed modal ── */}
-      <OrderConfirmedModal
-        orderNumber={order.order_number}
-        items={order.order_items ?? []}
-      />
+      <OrderConfirmedModal orderNumber={order.order_number} />
 
       {/* ── Page-level animation styles ── */}
       <style>{`
@@ -126,7 +142,6 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
 
       <main className="w-full min-h-screen bg-[#F5F0E8] pt-[100px] pb-[120px] px-5 lg:px-0 font-sans">
         <div className="max-w-[680px] mx-auto">
-
           {/* ── Hero confirmation banner ── */}
           <div className="oc-fadeup flex flex-col items-center text-center mb-10">
             {/* Animated check circle */}
@@ -167,10 +182,11 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
 
           {/* ── Main card ── */}
           <div className="oc-fadeup oc-delay-1 bg-white border border-[#E8DFD0] rounded-[20px] overflow-hidden shadow-[0_4px_40px_rgba(0,0,0,0.04)]">
-
             {/* What happens next */}
             <div className="bg-[#FFFBF6] border-b border-[#E8DFD0] px-8 py-6">
-              <h2 className="font-serif text-[17px] text-[#1C1917] mb-2">What happens next?</h2>
+              <h2 className="font-serif text-[17px] text-[#1C1917] mb-2">
+                What happens next?
+              </h2>
               <p className="text-[13px] text-[#6B6560] leading-relaxed">
                 {isManualPayment
                   ? `Your ${order.payment_method === "bkash" ? "bKash" : "Nagad"} payment is pending verification. Once our team confirms the Transaction ID (${order.payment_reference}), your order will move to Processing and ship within 2–3 business days.`
@@ -188,16 +204,22 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
             <div className="px-8 py-5 border-b border-[#E8DFD0] flex flex-wrap gap-3 items-center justify-between">
               <div className="flex flex-wrap gap-3">
                 <div className="flex flex-col gap-1">
-                  <span className="text-[10px] uppercase tracking-[0.12em] text-[#A8A29D]">Order Status</span>
+                  <span className="text-[10px] uppercase tracking-[0.12em] text-[#A8A29D]">
+                    Order Status
+                  </span>
                   <StatusPill label={order.order_status} />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-[10px] uppercase tracking-[0.12em] text-[#A8A29D]">Payment</span>
+                  <span className="text-[10px] uppercase tracking-[0.12em] text-[#A8A29D]">
+                    Payment
+                  </span>
                   <StatusPill label={order.payment_status} />
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-[10px] uppercase tracking-[0.12em] text-[#A8A29D] block">Order Date</span>
+                <span className="text-[10px] uppercase tracking-[0.12em] text-[#A8A29D] block">
+                  Order Date
+                </span>
                 <span className="text-[13px] text-[#1C1917] font-medium">
                   {new Date(order.created_at).toLocaleDateString("en-BD", {
                     day: "numeric",
@@ -221,9 +243,13 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
                   <br />
                   {address.area}, {address.city}
                 </p>
-                <p className="text-[13px] text-[#6B6560] mt-2">Ph: {order.customer_phone}</p>
+                <p className="text-[13px] text-[#6B6560] mt-2">
+                  Ph: {order.customer_phone}
+                </p>
                 {order.customer_email && (
-                  <p className="text-[13px] text-[#6B6560]">{order.customer_email}</p>
+                  <p className="text-[13px] text-[#6B6560]">
+                    {order.customer_email}
+                  </p>
                 )}
               </div>
               <div className="px-8 py-6">
@@ -234,17 +260,18 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
                   {order.payment_method === "cod"
                     ? "Cash on Delivery"
                     : order.payment_method === "bkash"
-                    ? "bKash"
-                    : order.payment_method === "nagad"
-                    ? "Nagad"
-                    : order.payment_method}
+                      ? "bKash"
+                      : order.payment_method === "nagad"
+                        ? "Nagad"
+                        : order.payment_method}
                 </p>
                 <p className="text-[13px] text-[#6B6560] mt-1 capitalize">
                   Status: {order.payment_status}
                 </p>
                 {isManualPayment && order.payment_reference && (
                   <p className="text-[12px] text-[#A8A29D] mt-1">
-                    Ref: <span className="font-mono">{order.payment_reference}</span>
+                    Ref:{" "}
+                    <span className="font-mono">{order.payment_reference}</span>
                   </p>
                 )}
                 <p className="text-[13px] text-[#6B6560] mt-2 capitalize">
@@ -265,10 +292,13 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
                     className="flex justify-between items-center py-3 text-[13px]"
                   >
                     <div className="flex flex-col">
-                      <span className="text-[#1C1917] font-medium">{item.product_name}</span>
+                      <span className="text-[#1C1917] font-medium">
+                        {item.product_name}
+                      </span>
                       <span className="text-[#A8A29D] text-[12px] mt-0.5">
                         Size {item.size}
-                        {item.color ? ` · ${item.color}` : ""} · Qty {item.quantity}
+                        {item.color ? ` · ${item.color}` : ""} · Qty{" "}
+                        {item.quantity}
                       </span>
                     </div>
                     <span className="text-[#1C1917] font-medium tabular-nums">
@@ -284,21 +314,29 @@ export default async function OrderConfirmationPage({ params, searchParams }: Pr
               <div className="flex flex-col gap-2.5 text-[13px]">
                 <div className="flex justify-between text-[#6B6560]">
                   <span>Subtotal</span>
-                  <span><Price amount={order.subtotal} muted /></span>
+                  <span>
+                    <Price amount={order.subtotal} muted />
+                  </span>
                 </div>
                 {Number(order.discount_amount) > 0 && (
                   <div className="flex justify-between text-[#C4714A]">
                     <span>Discount</span>
-                    <span>−<Price amount={order.discount_amount} muted /></span>
+                    <span>
+                      −<Price amount={order.discount_amount} muted />
+                    </span>
                   </div>
                 )}
                 <div className="flex justify-between text-[#6B6560]">
                   <span>Shipping</span>
-                  <span><Price amount={order.shipping_fee} muted /></span>
+                  <span>
+                    <Price amount={order.shipping_fee} muted />
+                  </span>
                 </div>
                 <div className="border-t border-[#E8DFD0] pt-4 mt-1 flex justify-between items-center text-[16px] font-semibold text-[#1C1917]">
                   <span>Total Paid</span>
-                  <span className="text-[#C4714A]"><Price amount={order.grand_total} /></span>
+                  <span className="text-[#C4714A]">
+                    <Price amount={order.grand_total} />
+                  </span>
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 /**
- * Soleil – Hero slide data
+ * Premium Export Shoes – Hero slide data
  * Prices are fetched at runtime from getProductBySlug; never hardcoded here.
  */
 

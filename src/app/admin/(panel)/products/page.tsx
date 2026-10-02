@@ -6,7 +6,7 @@ import { Package, Plus } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products | Soleil Admin",
+  title: "Products | Premium Export Shoes Admin",
   robots: { index: false, follow: false },
 };
 
@@ -17,7 +17,11 @@ export default function ProductsPage() {
         title="Products"
         subtitle="Manage your product catalogue."
         actions={
-          <AdminButton variant="primary" size="sm" icon={<Plus className="w-3.5 h-3.5" />}>
+          <AdminButton
+            variant="primary"
+            size="sm"
+            icon={<Plus className="w-3.5 h-3.5" />}
+          >
             Add product
           </AdminButton>
         }
@@ -29,7 +33,11 @@ export default function ProductsPage() {
           title="No products yet"
           description="Your product catalogue will appear here. Add your first product to get started."
           action={
-            <AdminButton variant="primary" size="sm" icon={<Plus className="w-3.5 h-3.5" />}>
+            <AdminButton
+              variant="primary"
+              size="sm"
+              icon={<Plus className="w-3.5 h-3.5" />}
+            >
               Add product
             </AdminButton>
           }

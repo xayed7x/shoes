@@ -3,7 +3,7 @@ import CheckoutForm from "@/components/checkout/CheckoutForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Secure Checkout | Soleil",
+  title: "Secure Checkout | Premium Export Shoes",
   description: "Complete your purchase securely.",
 };
 

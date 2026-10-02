@@ -9,8 +9,15 @@ import { useCartStore } from "@/store/cartStore";
 import { formatBDT } from "@/lib/utils";
 import Price from "@/components/ui/Price";
 export default function CartDrawer() {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, subtotal, totalItems } =
-    useCartStore();
+  const {
+    items,
+    isOpen,
+    closeCart,
+    removeItem,
+    updateQuantity,
+    subtotal,
+    totalItems,
+  } = useCartStore();
 
   const drawerRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +28,7 @@ export default function CartDrawer() {
     if (!el) return;
 
     const focusable = el.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
     );
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -120,7 +127,10 @@ export default function CartDrawer() {
             <div className="flex-1 overflow-y-auto py-4 px-6">
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-                  <ShoppingBag className="w-14 h-14 text-[#E8DFD0]" strokeWidth={1} />
+                  <ShoppingBag
+                    className="w-14 h-14 text-[#E8DFD0]"
+                    strokeWidth={1}
+                  />
                   <p className="font-serif italic text-[22px] text-[#1C1917]">
                     Your cart is empty
                   </p>
@@ -141,7 +151,8 @@ export default function CartDrawer() {
                     {items.map((item) => {
                       const effectivePrice =
                         item.variant.price_override ?? item.product.price;
-                      const imageSrc = item.product.images?.[0] || "/shoes/shoe-1.png";
+                      const imageSrc =
+                        item.product.images?.[0] || "/shoes/shoe-1.png";
                       const isRemote = imageSrc.startsWith("http");
 
                       return (
@@ -181,7 +192,7 @@ export default function CartDrawer() {
                           {/* Details */}
                           <div className="flex flex-col flex-1 min-w-0">
                             <p className="font-sans text-[10px] uppercase tracking-widest text-[#6B6560]">
-                              SOLEIL
+                              PREMIUM EXPORT SHOES
                             </p>
                             <Link
                               href={`/product/${item.product.slug}`}
@@ -208,12 +219,17 @@ export default function CartDrawer() {
 
                             <div className="flex items-center justify-between mt-3">
                               <span className="font-serif text-[17px] font-semibold text-[#1C1917]">
-                                <Price amount={effectivePrice * item.quantity} />
+                                <Price
+                                  amount={effectivePrice * item.quantity}
+                                />
                               </span>
                               <div className="flex items-center gap-2">
                                 <button
                                   onClick={() =>
-                                    updateQuantity(item.variant.id, item.quantity - 1)
+                                    updateQuantity(
+                                      item.variant.id,
+                                      item.quantity - 1,
+                                    )
                                   }
                                   aria-label={`Decrease quantity of ${item.product.name}`}
                                   className="w-7 h-7 rounded-full border border-[#E8DFD0] flex items-center justify-center hover:bg-[#F5F0E8] transition-colors"
@@ -225,7 +241,10 @@ export default function CartDrawer() {
                                 </span>
                                 <button
                                   onClick={() =>
-                                    updateQuantity(item.variant.id, item.quantity + 1)
+                                    updateQuantity(
+                                      item.variant.id,
+                                      item.quantity + 1,
+                                    )
                                   }
                                   aria-label={`Increase quantity of ${item.product.name}`}
                                   className="w-7 h-7 rounded-full border border-[#E8DFD0] flex items-center justify-center hover:bg-[#F5F0E8] transition-colors"
@@ -257,13 +276,17 @@ export default function CartDrawer() {
                 <div className="space-y-1.5">
                   <div className="flex justify-between font-sans text-[13px] text-[#6B6560]">
                     <span>Subtotal</span>
-                    <span><Price amount={total} muted /></span>
+                    <span>
+                      <Price amount={total} muted />
+                    </span>
                   </div>
                   <div className="flex justify-between font-sans text-[13px] text-[#6B6560]">
                     <span>Shipping</span>
                     <span>
                       {shipping === 0 ? (
-                        <span className="text-emerald-600 font-medium">Free</span>
+                        <span className="text-emerald-600 font-medium">
+                          Free
+                        </span>
                       ) : (
                         <Price amount={shipping} muted />
                       )}
@@ -276,7 +299,9 @@ export default function CartDrawer() {
                   )}
                   <div className="flex justify-between font-serif text-[19px] text-[#1C1917] pt-2 border-t border-[#E8DFD0]">
                     <span>Total</span>
-                    <span><Price amount={grand} /></span>
+                    <span>
+                      <Price amount={grand} />
+                    </span>
                   </div>
                 </div>
 

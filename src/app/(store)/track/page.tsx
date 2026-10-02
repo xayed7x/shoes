@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import TrackOrderForm from "@/components/track/TrackOrderForm";
 
 export const metadata: Metadata = {
-  title: "Track Your Order | Soleil",
-  description: "Track the status of your Soleil order.",
+  title: "Track Your Order | Premium Export Shoes",
+  description: "Track the status of your Premium Export Shoes order.",
 };
 
 export default function TrackOrderPage() {

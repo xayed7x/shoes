@@ -2,7 +2,12 @@
 
 import { useState, useCallback, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, PanInfo, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  PanInfo,
+  useReducedMotion,
+} from "framer-motion";
 import { heroSlides } from "@/data/heroSlides";
 import Price from "@/components/ui/Price";
 
@@ -17,11 +22,12 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
 
   const goNext = useCallback(
     () => setActiveIndex((p) => (p + 1) % heroSlides.length),
-    []
+    [],
   );
   const goPrev = useCallback(
-    () => setActiveIndex((p) => (p - 1 + heroSlides.length) % heroSlides.length),
-    []
+    () =>
+      setActiveIndex((p) => (p - 1 + heroSlides.length) % heroSlides.length),
+    [],
   );
 
   const handleDragEnd = useCallback(
@@ -30,7 +36,7 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
       if (info.offset.x < -45) goNext();
       else if (info.offset.x > 45) goPrev();
     },
-    [goNext, goPrev]
+    [goNext, goPrev],
   );
 
   const slide = heroSlides[activeIndex];
@@ -46,7 +52,9 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.08}
-        onDragStart={() => { isDragging.current = true; }}
+        onDragStart={() => {
+          isDragging.current = true;
+        }}
         onDragEnd={handleDragEnd}
         className="cursor-grab active:cursor-grabbing select-none"
         style={{ touchAction: "pan-y" }}
@@ -67,14 +75,13 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
             {/* Watermark */}
             <span
               aria-hidden="true"
-              className="absolute right-[-8%] bottom-[-20%] font-serif italic leading-none pointer-events-none select-none"
+              className="absolute right-[-8%] bottom-[-20%] font-barlow-condensed font-extrabold italic uppercase leading-none pointer-events-none select-none"
               style={{
                 fontSize: "120px",
                 color: slide.theme.watermarkColor,
-                fontFamily: "var(--font-playfair), Georgia, serif",
               }}
             >
-              Soleil
+              PREMIUM
             </span>
 
             {/* Left: text content */}
@@ -87,7 +94,9 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
               </p>
               <Link
                 href={`/product/${slide.productSlug}`}
-                onClick={(e) => { if (isDragging.current) e.preventDefault(); }}
+                onClick={(e) => {
+                  if (isDragging.current) e.preventDefault();
+                }}
                 className="block font-serif italic leading-tight mb-2 hover:opacity-90"
                 style={{
                   fontFamily: "var(--font-playfair), Georgia, serif",
@@ -107,7 +116,9 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
               )}
               <Link
                 href={`/product/${slide.productSlug}`}
-                onClick={(e) => { if (isDragging.current) e.preventDefault(); }}
+                onClick={(e) => {
+                  if (isDragging.current) e.preventDefault();
+                }}
                 className="self-start inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.12em] transition-opacity hover:opacity-80"
                 style={{
                   background: slide.theme.ctaBg,
@@ -121,7 +132,9 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
             {/* Right: shoe image (clickable) */}
             <Link
               href={`/product/${slide.productSlug}`}
-              onClick={(e) => { if (isDragging.current) e.preventDefault(); }}
+              onClick={(e) => {
+                if (isDragging.current) e.preventDefault();
+              }}
               className="absolute right-0 top-0 bottom-0 w-[50%] flex items-end justify-center overflow-hidden z-20 cursor-pointer"
             >
               {/* Soft glow circle */}
@@ -160,8 +173,7 @@ export default function MobileHeroClient({ prices }: MobileHeroProps) {
             style={{
               width: idx === activeIndex ? "18px" : "5px",
               height: "5px",
-              background:
-                idx === activeIndex ? "#1C1917" : "#1C191740",
+              background: idx === activeIndex ? "#1C1917" : "#1C191740",
             }}
           />
         ))}

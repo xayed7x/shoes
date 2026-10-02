@@ -6,21 +6,24 @@ const testimonials = [
   {
     id: 1,
     stars: 5,
-    quote: "I have never owned a pair of sleepers that felt this premium. The leather is soft, the fit is perfect, and people keep asking me where I got them.",
+    quote:
+      "I have never owned a pair of sleepers that felt this premium. The leather is soft, the fit is perfect, and people keep asking me where I got them.",
     name: "Rahman K.",
     purchase: "Purchased — The Artisan",
   },
   {
     id: 2,
     stars: 5,
-    quote: "Soleil completely changed how I think about casual footwear. These are not just sleepers — they are a statement. Worth every penny.",
+    quote:
+      "Premium Export Shoes completely changed how I think about casual footwear. These are not just sleepers — they are a statement. Worth every penny.",
     name: "Priya M.",
     purchase: "Purchased — Sage Drift",
   },
   {
     id: 3,
     stars: 5,
-    quote: "The craftsmanship is unreal. You can tell every detail was thought about carefully. I bought two pairs within the same week.",
+    quote:
+      "The craftsmanship is unreal. You can tell every detail was thought about carefully. I bought two pairs within the same week.",
     name: "Arif H.",
     purchase: "Purchased — Terra Step",
   },
@@ -45,19 +48,25 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[28px] w-full">
           {testimonials.map((t, idx) => {
             // Tablet-only rule for the 3rd card
-            const tabletSpanClass = idx === 2 ? "md:col-span-2 lg:col-span-1 md:max-w-[500px] md:mx-auto lg:max-w-none" : "";
-            
+            const tabletSpanClass =
+              idx === 2
+                ? "md:col-span-2 lg:col-span-1 md:max-w-[500px] md:mx-auto lg:max-w-none"
+                : "";
+
             return (
               <motion.div
                 key={t.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.5, 
-                  ease: "easeOut", 
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
                   // Desktop (lg) stagger, Mobile/Tablet (md) no stagger for simpler feel or per request
-                  delay: typeof window !== 'undefined' && window.innerWidth >= 1024 ? idx * 0.15 : 0 
+                  delay:
+                    typeof window !== "undefined" && window.innerWidth >= 1024
+                      ? idx * 0.15
+                      : 0,
                 }}
                 className={`bg-white rounded-[20px] p-[28px] md:p-[40px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)] hover:-translate-y-[6px] transition-all duration-300 ease-out group flex flex-col ${tabletSpanClass}`}
               >
