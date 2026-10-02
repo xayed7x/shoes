@@ -147,7 +147,7 @@ export async function getShopProducts(
 
     const [{ count }, { data, error }] = await Promise.all([countQ, dataQ]);
 
-    if (error || !data) return shopFallback(options);
+    if (error || !data || data.length === 0) return shopFallback(options);
 
     const total = count ?? 0;
     return {

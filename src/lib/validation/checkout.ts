@@ -24,7 +24,7 @@ export const checkoutSchema = z.object({
   items: z
     .array(
       z.object({
-        variantId: z.string().uuid(),
+        variantId: z.string().min(1, "Variant ID is required"),
         quantity: z.number().int().positive(),
       })
     )

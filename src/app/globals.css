@@ -18,12 +18,17 @@
   --sage: #B5C4A8;
 }
 
-html, body {
+html {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -35,6 +40,36 @@ html, body {
   100% { transform: translateX(-50%); }
 }
 
-.animate-\\[scrollLeft_30s_linear_infinite\\] {
+.animate-scroll-left {
   animation: scrollLeft 30s linear infinite;
+}
+
+/* Checkout button shimmer animation */
+@keyframes soleil-shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes soleil-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.btn-order-loading {
+  background: linear-gradient(
+    90deg,
+    #1C1917 0%,
+    #3a2f2a 20%,
+    #C4714A 45%,
+    #e0845a 50%,
+    #C4714A 55%,
+    #3a2f2a 80%,
+    #1C1917 100%
+  );
+  background-size: 200% auto;
+  animation: soleil-shimmer 1.6s linear infinite;
+}
+
+.soleil-spinner {
+  animation: soleil-spin 0.85s linear infinite;
 }

@@ -23,6 +23,7 @@ const notoBengali = Noto_Sans_Bengali({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://autex.vercel.app"),
   title: "Soleil - Luxury Handcrafted Footwear",
   description:
     "Experience unparalleled comfort with Soleil's handcrafted footwear. Built for those who move with intention. Premium materials, minimal design.",
