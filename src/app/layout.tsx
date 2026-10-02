@@ -37,7 +37,7 @@ const barlowCondensed = Barlow_Condensed({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://autex.vercel.app",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://premiumexportshoes-com.vercel.app",
   ),
   title: "Premium Export Shoes - Luxury Handcrafted Footwear",
   description:
@@ -46,16 +46,8 @@ export const metadata: Metadata = {
     title: "Premium Export Shoes - Luxury Handcrafted Footwear",
     description:
       "Experience unparalleled comfort with Premium Export Shoes' handcrafted footwear.",
-    url: "https://autex.vercel.app/",
+    url: "https://premiumexportshoes-com.vercel.app/",
     siteName: "Premium Export Shoes",
-    images: [
-      {
-        url: "/open-graph.webp",
-        width: 1200,
-        height: 630,
-        alt: "Premium Export Shoes - Comfort, Redefined",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -64,7 +56,6 @@ export const metadata: Metadata = {
     title: "Premium Export Shoes - Luxury Handcrafted Footwear",
     description:
       "Experience unparalleled comfort with Premium Export Shoes' handcrafted footwear.",
-    images: ["/open-graph.webp"],
   },
 };
 
