@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     siteName: "Premium Export Shoes",
     images: [
       {
-        url: "/metadata/og-image.png",
+        url: "/open-graph.webp",
         width: 1200,
         height: 630,
         alt: "Premium Export Shoes - Comfort, Redefined",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Premium Export Shoes - Luxury Handcrafted Footwear",
     description:
       "Experience unparalleled comfort with Premium Export Shoes' handcrafted footwear.",
-    images: ["/metadata/og-image.png"],
+    images: ["/open-graph.webp"],
   },
 };
 
